@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ─── HeatShield AI Design System ─────────────────────── */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  /* Light theme */
+  --background: #F8FAFB;
+  --foreground: #0A2540;
+  --primary: #0A2540;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2E7D32;
+  --secondary-foreground: #FFFFFF;
+  --accent: #F57C00;
+  --accent-foreground: #FFFFFF;
+  --muted: #E8ECF0;
+  --muted-foreground: #5A6977;
+  --card: #FFFFFF;
+  --card-foreground: #0A2540;
+  --border: #D1D9E0;
+  --ring: #0A2540;
+  --destructive: #DC2626;
+  --sidebar: #0A2540;
+  --sidebar-foreground: #CBD5E1;
+  --radius: 8px;
+}
+
+.dark {
+  --background: #0B1120;
+  --foreground: #E2E8F0;
+  --primary: #3B82F6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #4CAF50;
+  --secondary-foreground: #FFFFFF;
+  --accent: #FF9800;
+  --accent-foreground: #FFFFFF;
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;
+  --card: #151E2F;
+  --card-foreground: #E2E8F0;
+  --border: #1E293B;
+  --ring: #3B82F6;
+  --destructive: #EF4444;
+  --sidebar: #0D1526;
+  --sidebar-foreground: #94A3B8;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* ─── Leaflet Overrides ───────────────────────────────── */
+
+.leaflet-container {
+  font-family: 'Inter', sans-serif !important;
+  border-radius: var(--radius);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* ─── Animations ──────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 124, 0, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 124, 0, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ─── Skeleton Loading ────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(90deg, var(--muted) 25%, rgba(255,255,255,0.1) 50%, var(--muted) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius);
+}
+
+/* ─── Heat Scale ──────────────────────────────────────── */
+
+.heat-scale-gradient {
+  background: linear-gradient(90deg, 
+    #2196F3 0%, 
+    #4CAF50 25%, 
+    #FFEB3B 50%, 
+    #FF9800 75%, 
+    #F44336 100%
+  );
+}
+
+/* ─── Government Badge ────────────────────────────────── */
+
+.gov-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(10, 37, 64, 0.08);
+  border: 1px solid rgba(10, 37, 64, 0.15);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.dark .gov-badge {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+  color: var(--primary);
+}
+
+/* ─── Stat Card Styles ────────────────────────────────── */
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.stat-card-primary::before { background: var(--primary); }
+.stat-card-secondary::before { background: var(--secondary); }
+.stat-card-accent::before { background: var(--accent); }
+.stat-card-destructive::before { background: var(--destructive); }
+
+/* ─── Risk Level Colors ───────────────────────────────── */
+
+.risk-low { color: #2196F3; }
+.risk-moderate { color: #4CAF50; }
+.risk-high { color: #FF9800; }
+.risk-very-high { color: #F44336; }
+.risk-extreme { color: #B71C1C; }
+
+.risk-bg-low { background-color: rgba(33, 150, 243, 0.1); }
+.risk-bg-moderate { background-color: rgba(76, 175, 80, 0.1); }
+.risk-bg-high { background-color: rgba(255, 152, 0, 0.1); }
+.risk-bg-very-high { background-color: rgba(244, 67, 54, 0.1); }
+.risk-bg-extreme { background-color: rgba(183, 28, 28, 0.15); }
